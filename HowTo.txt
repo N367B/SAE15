@@ -1,0 +1,12 @@
+- git clone '...'
+- git remote -v --> pour vérification
+- git --global user.email / user.name ""
+Connexion :
+Creation de tokens personnels dans les paramètres dévelppeurs de GitHub
+
+Tests
+Creation / modification fichier
+- git add
+- git commit
+- git push
+Si ne fonctionne pas : git merge / git pull
