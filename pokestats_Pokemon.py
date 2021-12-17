@@ -6,7 +6,8 @@ def getPokemon(n):
 	return pokemon
 
 def statsGeneral(pokemon):
-	return pokemon.types[0].type.name
+	stats = {'type1' : [], 'type2' : [], 'generation' : [], 'pokedex': [], 'version':[], ... is there any function to do that ?}
+	pokemon.types[0].type.name
 def mardownStatsGeneral(stats):
 	print('ok')
 
