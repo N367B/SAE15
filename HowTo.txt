@@ -23,5 +23,5 @@ import pokepy
 
 
 Doc : https://pokeapi.co/docs/v2
-
+https://pokeapi.github.io/pokepy/usage/
 Ne pas oublier le cahier des charges
