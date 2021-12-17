@@ -1,4 +1,4 @@
-- git clone '...'
+- git clone 'url'
 - git remote -v --> pour vérification
 - git --global user.email / user.name ""
 Connexion :
