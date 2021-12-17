@@ -10,3 +10,18 @@ Creation / modification fichier
 - git commit
 - git push
 Si ne fonctionne pas : git merge / git pull
+
+---
+Utilisation python:
+
+/!\ utiliser Python 3.6.9
+Pour avoir le module nécéssaire : 
+pip3 install pokepy ou python -m pip install pokepy
+-> importer les modules nécéssaires :
+import markdown
+import pokepy
+
+
+Doc : https://pokeapi.co/docs/v2
+
+Ne pas oublier le cahier des charges
