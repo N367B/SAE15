@@ -1,0 +1,3 @@
+Je n'arrive pas a utiliser deux version de python en même temps. Beaucoup de problèmes !!! (pip, ...)
+AHHHHHHH
+
