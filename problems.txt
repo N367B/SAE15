@@ -1,3 +1,4 @@
 Je n'arrive pas a utiliser deux version de python en même temps. Beaucoup de problèmes !!! (pip, ...)
 AHHHHHHH
 
+J'ai tous essayé mais à chaque fois qu'un problème est résolu de nouveaux apparraissent
