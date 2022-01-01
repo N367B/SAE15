@@ -3,6 +3,8 @@
 - git --global user.email / user.name ""
 Connexion :
 Creation de tokens personnels dans les paramètres dévelppeurs de GitHub
+On peut aussi faire grace  SSH, plus long  configurer mais plus rapide sur le long terme
+
 
 Tests
 Creation / modification fichier
