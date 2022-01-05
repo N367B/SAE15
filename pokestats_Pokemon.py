@@ -32,7 +32,7 @@ def markdownStatsGeneral(stats):
 	content += '#Liste de $s attaques :'
 	for i in range(len(stats[4])):
 		content += '- '+stats[4][i] + '\n'
-	with open(stats[1]+'_stats.md', 'wb') as handler:
+	with open('./markdown/StatsGeneral/'+stats[1]+'_stats.md', 'wb') as handler:
 		handler.write(content)
 def mardownToHTML(file):
 	print('ok')
