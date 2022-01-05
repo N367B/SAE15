@@ -1,6 +1,7 @@
 import markdown
 import pokepy
 import requests
+import os
 
 def getPokemon(n):
 	pokemon = pokepy.V2Client().get_pokemon(n)
@@ -34,8 +35,20 @@ def markdownStatsGeneral(stats):
 		content += '- '+stats[4][i] + '\n'
 	with open('./markdown/StatsGeneral/'+stats[1]+'_stats.md', 'w') as handler:
 		handler.write(content)
-def mardownToHTML(file):
-	print('ok')
 
-stats = (statsGeneral(getPokemon(151)))
-markdownStatsGeneral(stats)
+def markdownToHTML(file):
+	with open('./markdown/StatsGeneral/'+file, "r") as input_file:
+		text = input_file.read()
+	html = markdown.markdown(text)
+	base = os.path.splitext(file)[0]
+	file += '.html'
+	with open('./html/StatsGeneral/'+file, 'w', encoding='utf-8') as output_file:
+	    output_file.write(html)
+
+
+def marche(n):
+	stats = (statsGeneral(getPokemon(n)))
+	markdownStatsGeneral(stats)
+	markdownToHTML(stats[1]+'_stats.md')
+
+marche(1)

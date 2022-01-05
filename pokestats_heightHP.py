@@ -1,5 +1,6 @@
 import markdown
 import pokepy
+import os
 
 def getPokemonList(first, last) :
 	pokemons = []
@@ -30,5 +31,14 @@ def markdownStatsHeightHP(stats) :
 	with open ("./markdown/StatsHeightHP/statsHeightHP.md", 'w') as handler:
 		handler.write(markdown)
 
+def markdownToHTML(file):
+	with open('./markdown/StatsHeightHP/'+file, "r") as input_file:
+		text = input_file.read()
+	html = markdown.markdown(text, extensions=['tables'])
+	base = os.path.splitext(file)[0]
+	file += '.html'
+	with open('./html/StatsHeightHP/'+file, 'w', encoding='utf-8') as output_file:
+	    output_file.write(html)
 
 markdownStatsHeightHP(statsHeight(getPokemonList(1, 10)))
+markdownToHTML('statsHeightHP.md')
