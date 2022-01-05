@@ -26,16 +26,16 @@ def downloadPokemonSprite(n):
 def markdownStatsGeneral(stats):
 	downloadPokemonSprite(stats[0])
 	content = '# Nom du pokémon : '+str(stats[1])+'\n\n'
-	content += '![image de '+str(stats[1])+'](./sprites/'+stats[1]+'.png)\n\n'
+	content += '![image de '+str(stats[1])+'](../../sprites/'+stats[1]+'.png)\n\n'
 	content += '## Taille : '+ str(stats[2])+'\n\n'
 	content += '## Poids : '+ str(stats[3])+'\n\n'
-	content += '#Liste de $s attaques :'
+	content += '#Liste des attaques :\n'
 	for i in range(len(stats[4])):
 		content += '- '+stats[4][i] + '\n'
-	with open('./markdown/StatsGeneral/'+stats[1]+'_stats.md', 'wb') as handler:
+	with open('./markdown/StatsGeneral/'+stats[1]+'_stats.md', 'w') as handler:
 		handler.write(content)
 def mardownToHTML(file):
 	print('ok')
 
-stats = (statsGeneral(getPokemon(25)))
+stats = (statsGeneral(getPokemon(151)))
 markdownStatsGeneral(stats)
