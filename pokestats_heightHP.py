@@ -3,12 +3,20 @@ import pokepy
 import os
 
 def getPokemonList(first, last) :
+	"""
+	Entrée : deux entier qui correspondent aux numéros des pokmon (premier strictement supérieur au deuxième)
+	Retourne une liste avec les données de chaque pokemon entre les deux entrées
+	"""
 	pokemons = []
 	for i in range(first, last+1):
 		pokemons.append(pokepy.V2Client().get_pokemon(i))
 	return pokemons
 
 def statsHeight(pokemonList) :
+	"""
+	Entrée : la liste des avec les données de chaque pokemon obtenu par la fonction getPokemonList(first, last)
+	Retourne une liste des données comportant le nom, la taille, la vie de chaque pokemon
+	"""
 	nom = [None] * len(pokemonList)
 	taille = [None] * len(pokemonList)
 	vie = [None] * len(pokemonList)
@@ -23,6 +31,11 @@ def statsHeight(pokemonList) :
 
 
 def markdownStatsHeightHP(stats) :
+	"""
+	Entrée : la liste obtenue par la fonction markdownStatsHeightHP(stats)
+	Créer un fichier au format markdown avec les pokemon rangée dans un tableau en fonction de la taille
+	Ce fichier s'appele statsHeightHP.mp stocké dans le répertoire ./markdown/StatsHeightHP/statsHeightHP.md
+	"""
 	markdown = "#Les pokémon grands sont-ils les plus tanky ? \n"
 	markdown += "| Nom | Taille | HP | \n"
 	for i in range(len(stats)) :
@@ -32,6 +45,10 @@ def markdownStatsHeightHP(stats) :
 		handler.write(markdown)
 
 def markdownToHTML(file):
+	"""
+	Entrée : le fichier statsHeightHP.mp
+	Transforme ce fichier en page HTML et l'enregistre dans ./html/StatsHeightHP
+	"""
 	with open('./markdown/StatsHeightHP/'+file, "r") as input_file:
 		text = input_file.read()
 	html = markdown.markdown(text, extensions=['tables'])
@@ -42,3 +59,4 @@ def markdownToHTML(file):
 
 markdownStatsHeightHP(statsHeight(getPokemonList(1, 10)))
 markdownToHTML('statsHeightHP.md')
+
