@@ -2,6 +2,7 @@ import markdown
 import pokepy
 import requests
 
+
 def getPokemon(n):
 	"""
 	Entrée : Un entier, pour un numéro de pokémon
@@ -10,6 +11,7 @@ def getPokemon(n):
 	"""
 	pokemon = pokepy.V2Client().get_pokemon(n)
 	return pokemon
+
 
 def statsGeneral(pokemon):
 	"""
@@ -27,6 +29,7 @@ def statsGeneral(pokemon):
 		attaques[i] = attaques[i].move.__dict__['name']
 	return [identifiant, nom, hauteur, poids, attaques]
 
+
 def downloadPokemonSprite(n):
 	"""
 	Entrée : un entier, pour le numéro du pokémon
@@ -38,6 +41,7 @@ def downloadPokemonSprite(n):
 	imagr = requests.get(imagrURL).content
 	with open('./sprites/'+pokemon.name+'.png', 'wb') as handler:
 		handler.write(imagr)
+
 
 def markdownStatsGeneral(stats):
 	"""
@@ -56,6 +60,7 @@ def markdownStatsGeneral(stats):
 	with open('./markdown/StatsGeneral/'+stats[1]+'_stats.md', 'w') as handler:
 		handler.write(content)
 
+
 def markdownToHTML(file):
 	"""
 	Entrée : le nom du fichier (seulement le nom+extension, sans le répertoire)
@@ -72,11 +77,12 @@ def markdownToHTML(file):
 
 def pokestats_pokemon(n):
 	"""
-	Permet de faire fonctionner
+	Permet de faire fonctionner pokestats_pokemon
 	"""
 	stats = (statsGeneral(getPokemon(n)))
 	markdownStatsGeneral(stats)
 	markdownToHTML(stats[1]+'_stats.md')
 	print("Les fichier sont créés pour " + stats[1] + " ")
+
 
 pokestats_pokemon(int(input("ID d'un pokémon ? ")))

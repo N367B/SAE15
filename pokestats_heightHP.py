@@ -1,6 +1,7 @@
 import markdown
 import pokepy
 
+
 def getPokemonList(first, last) :
 	"""
 	Entrée : deux entier qui correspondent aux numéros des pokmon (premier strictement supérieur au deuxième)
@@ -10,6 +11,7 @@ def getPokemonList(first, last) :
 	for i in range(first, last):
 		pokemons.append(pokepy.V2Client().get_pokemon(i))
 	return pokemons
+
 
 def statsHeightHP(pokemonList) :
 	"""
@@ -43,6 +45,7 @@ def markdownStatsHeightHP(stats) :
 	with open ("./markdown/StatsHeightHP/statsHeightHP.md", 'w') as handler:
 		handler.write(markdown)
 
+
 def markdownToHTML(file):
 	"""
 	Entrée : le fichier statsHeightHP.mp
@@ -55,9 +58,15 @@ def markdownToHTML(file):
 	file += '.html'
 	with open('./html/StatsHeightHP/'+file, 'w', encoding='utf-8') as output_file:
 	    output_file.write(html)
+
+
 def pokestats_heightHP(first, last):
+	"""
+	Permet de faire fonctionner heigthHP
+	"""
 	markdownStatsHeightHP(statsHeightHP(getPokemonList(first, last)))
 	markdownToHTML('statsHeightHP.md')
 	print('Les fichiers sont créés')
+
 
 pokestats_heightHP(int(input('ID du premier pokémon ? ')), int(input('ID du second pokémon ? ')))
