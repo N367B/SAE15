@@ -1,6 +1,5 @@
 import markdown
 import pokepy
-import os
 
 def getPokemonList(first, last) :
 	"""
@@ -8,11 +7,11 @@ def getPokemonList(first, last) :
 	Retourne une liste avec les données de chaque pokemon entre les deux entrées
 	"""
 	pokemons = []
-	for i in range(first, last+1):
+	for i in range(first, last):
 		pokemons.append(pokepy.V2Client().get_pokemon(i))
 	return pokemons
 
-def statsHeight(pokemonList) :
+def statsHeightHP(pokemonList) :
 	"""
 	Entrée : la liste des avec les données de chaque pokemon obtenu par la fonction getPokemonList(first, last)
 	Retourne une liste des données comportant le nom, la taille, la vie de chaque pokemon
@@ -47,16 +46,18 @@ def markdownStatsHeightHP(stats) :
 def markdownToHTML(file):
 	"""
 	Entrée : le fichier statsHeightHP.mp
-	Transforme ce fichier en page HTML et l'enregistre dans ./html/StatsHeightHP
+	Transforme/convertit ce fichier en page HTML et l'enregistre dans ./html/StatsHeightHP
 	"""
 	with open('./markdown/StatsHeightHP/'+file, "r") as input_file:
 		text = input_file.read()
 	html = markdown.markdown(text, extensions=['tables'])
-	base = os.path.splitext(file)[0]
+	file = file[:-3]
 	file += '.html'
 	with open('./html/StatsHeightHP/'+file, 'w', encoding='utf-8') as output_file:
 	    output_file.write(html)
+def pokestats_heightHP(first, last):
+	markdownStatsHeightHP(statsHeightHP(getPokemonList(first, last)))
+	markdownToHTML('statsHeightHP.md')
+	print('Les fichiers sont créés')
 
-markdownStatsHeightHP(statsHeight(getPokemonList(1, 10)))
-markdownToHTML('statsHeightHP.md')
-
+pokestats_heightHP(int(input('ID du premier pokémon ? ')), int(input('ID du second pokémon ? ')))
