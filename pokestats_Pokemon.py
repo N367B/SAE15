@@ -77,6 +77,3 @@ def marche(n):
 	stats = (statsGeneral(getPokemon(n)))
 	markdownStatsGeneral(stats)
 	markdownToHTML(stats[1]+'_stats.md')
-
-
-if __name__=__main__:
